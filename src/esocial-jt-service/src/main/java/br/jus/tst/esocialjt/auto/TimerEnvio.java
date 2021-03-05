@@ -18,7 +18,7 @@ public class TimerEnvio {
 
 	@Autowired
 	private CicloEnvio cicloEnvio;
-
+	
 	private ScheduledFuture<?> scheduledFuture;
 	
 	private static final String TIMER_INFO = "Execucao automatica eSocial-JT";
@@ -43,6 +43,7 @@ public class TimerEnvio {
     }
 
     private Runnable executar() {
+    	
         return () ->  cicloEnvio.executar();
     }
 

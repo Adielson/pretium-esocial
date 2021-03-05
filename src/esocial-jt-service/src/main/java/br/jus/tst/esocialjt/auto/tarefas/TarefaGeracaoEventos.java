@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.jus.tst.esocialjt.dominio.Ocorrencia;
 import br.jus.tst.esocialjt.negocio.OcorrenciaServico;
+import br.jus.tst.esocialjt.pretium.BuscarProximoEnvioService;
 
 @Service
 public class TarefaGeracaoEventos implements Tarefa{
@@ -18,8 +19,20 @@ public class TarefaGeracaoEventos implements Tarefa{
 	@Autowired
 	private OcorrenciaServico ocorrenciaServico;
 	
+	@Autowired
+	private BuscarProximoEnvioService buscarProximoEnvio; 
+	
 	@Override
 	public boolean executar() {
+
+		/*
+		try {
+			this.buscarProximoEnvio.registrarEventoParaEnvio();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		*/
+		
 		List<Ocorrencia> ocorrencias = ocorrenciaServico.recuperaOcorrenciasSemEventos();
 		if(! ocorrencias.isEmpty()) {
 			LOGGER.info("Gerando eventos para " + ocorrencias.size() + " ocorrencias");
