@@ -14,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -26,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@Table(name = "EST_EVENTO_TOTALIZADOR")
+@Table(name = "EST_EVENTO_TOTALIZADOR", schema = "esocial")
 @NamedQueries({ @NamedQuery(name = "EventoTotalizador.findAll", query = "SELECT e FROM EventoTotalizador e")
 })
 
@@ -35,8 +34,9 @@ public class EventoTotalizador implements Serializable {
 	private static final long serialVersionUID = -1024704188467704223L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_TOT_ID")
-	@SequenceGenerator(name = "SEQ_EVT_TOT_ID", sequenceName = "SEQ_EVT_TOT_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_TOT_ID")
+	//@SequenceGenerator(name = "SEQ_EVT_TOT_ID", sequenceName = "SEQ_EVT_TOT_ID", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_EVENTO_TOTALIZADOR", unique = true, nullable = false, precision = 22, scale = 0)
 	private Long id;
 

@@ -19,7 +19,6 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,7 +38,7 @@ import br.jus.tst.esocial.ocorrencia.TipoOcorrencia;
 import br.jus.tst.esocial.ocorrencia.dados.DadosOcorrencia;
 
 @Entity
-@Table(name = "EST_OCORRENCIA")
+@Table(name = "EST_OCORRENCIA", schema = "esocial")
 @NamedQueries({ @NamedQuery(name = "Ocorrencia.findAll", query = "SELECT o FROM Ocorrencia o"),
 		@NamedQuery(name = "Ocorrencia.ocorrenciasSemEvento", query = "SELECT o FROM Ocorrencia o where o.id NOT IN (SELECT e.ocorrencia.id FROM Evento e)"),
 		@NamedQuery(name = "Ocorrencia.findNecessaryDataOnly", 
@@ -55,8 +54,9 @@ public class Ocorrencia implements Serializable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Ocorrencia.class);
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_OCORRENCIA_ID")
-	@SequenceGenerator(name = "SEQ_OCORRENCIA_ID", sequenceName = "SEQ_OCORRENCIA_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_OCORRENCIA_ID")
+	//@SequenceGenerator(name = "SEQ_OCORRENCIA_ID", sequenceName = "SEQ_OCORRENCIA_ID", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_OCORRENCIA", unique = true, nullable = false, precision = 22, scale = 0)
 	private Long id;
 

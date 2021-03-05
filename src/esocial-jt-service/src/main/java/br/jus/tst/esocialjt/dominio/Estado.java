@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EST_ESTADO")
+@Table(name = "EST_ESTADO", schema = "esocial")
 @NamedQueries({ @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e"),
 		@NamedQuery(name = "Estado.findByDescricao", query = "SELECT e FROM Estado e WHERE e.descricao = :descricao") })
 public class Estado implements Serializable {

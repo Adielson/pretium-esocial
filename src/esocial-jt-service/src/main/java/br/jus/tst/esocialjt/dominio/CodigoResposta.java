@@ -4,12 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import br.jus.tst.esocial.validacao.OneOf;
 
 @Entity
-@Table(name = "EST_RESPOSTA_GOV")
+@Table(name = "EST_RESPOSTA_GOV", schema = "esocial" )
 @XmlRootElement
 @NamedQueries({
 		@NamedQuery(name = "CodigoRetorno.obterResposta", query = "SELECT c FROM CodigoResposta c WHERE c.codResposta = :codResposta AND c.codGrupoResposta = :codGrupoResposta") })
@@ -29,8 +26,8 @@ public class CodigoResposta implements Serializable {
 	public static final int RESPOSTA_GOV_EVENTO = 2;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESPOSTA_ID")
-	@SequenceGenerator(name = "SEQ_RESPOSTA_ID", sequenceName = "SEQ_RESPOSTA_ID", allocationSize = 1, initialValue = 100)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESPOSTA_ID")
+	//@SequenceGenerator(name = "SEQ_RESPOSTA_ID", sequenceName = "SEQ_RESPOSTA_ID", allocationSize = 1, initialValue = 100)
 	@Column(name = "COD_IDENTIFICADOR", unique = true, nullable = false, precision = 22, scale = 0)
 	private Long id;
 

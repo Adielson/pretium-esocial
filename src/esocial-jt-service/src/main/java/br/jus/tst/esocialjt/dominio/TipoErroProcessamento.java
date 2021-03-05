@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "EST_TIPO_ERRO_PROCESSAMENTO")
+@Table(name = "EST_TIPO_ERRO_PROCESSAMENTO", schema = "esocial")
 @XmlRootElement
 @NamedQueries({ @NamedQuery(name = "TipoErroProcessamento.findAll", query = "SELECT e FROM TipoErroProcessamento e"),
 		@NamedQuery(name = "TipoErroProcessamento.findByDescricao", query = "SELECT e FROM TipoErroProcessamento e WHERE e.descricao = :descricao") })

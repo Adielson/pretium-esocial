@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name = "EST_GRUPO_TIPO_EVENTO")
+@Table(name = "EST_GRUPO_TIPO_EVENTO", schema = "esocial")
 @NamedQueries({ @NamedQuery(name = "GrupoTipoEvento.findAll", query = "SELECT e FROM GrupoTipoEvento e"),
 		@NamedQuery(name = "GrupoTipoEvento.findByDescricao", query = "SELECT e FROM GrupoTipoEvento e WHERE e.descricao = :descricao") })
 public class GrupoTipoEvento implements Serializable {

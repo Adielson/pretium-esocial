@@ -17,7 +17,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @Entity
-@Table(name = "EST_LOTE")
+@Table(name = "EST_LOTE", schema = "esocial")
 @NamedQuery(name = "EstLote.findAll", query = "SELECT e FROM Lote e")
 public class Lote implements Serializable {
 
@@ -39,8 +38,9 @@ public class Lote implements Serializable {
 	private static final int MAX_ERROR_SIZE = 4000;
 
 	@Id
-	@SequenceGenerator(name = "EST_LOTE_CODLOTE_GENERATOR", sequenceName = "SEQ_LOTE_ID", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EST_LOTE_CODLOTE_GENERATOR")
+	//@SequenceGenerator(name = "EST_LOTE_CODLOTE_GENERATOR", sequenceName = "SEQ_LOTE_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EST_LOTE_CODLOTE_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_LOTE", unique = true, nullable = false, precision = 22, scale = 0)
 	private long id;
 

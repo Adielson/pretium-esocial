@@ -17,7 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -28,7 +27,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import br.jus.tst.esocialjt.util.OcorrenciaJsonSerializer;
 
 @Entity
-@Table(name = "EST_EVENTO")
+@Table(name = "EST_EVENTO", schema = "esocial")
 @NamedQueries({ @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e"),
 		@NamedQuery(name = "Evento.recuperarEventoPorIdEvento", query = "SELECT e FROM Evento e WHERE e.idEvento =:idEvento"),
 })
@@ -38,8 +37,9 @@ public class Evento implements Serializable {
 	private static final long serialVersionUID = -3712811249360102207L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_ID")
-	@SequenceGenerator(name = "SEQ_EVT_ID", sequenceName = "SEQ_EVT_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EVT_ID")
+	//@SequenceGenerator(name = "SEQ_EVT_ID", sequenceName = "SEQ_EVT_ID", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_EVENTO", unique = true, nullable = false, precision = 22, scale = 0)
 	private Long id;
 

@@ -79,6 +79,7 @@ public class Certificado {
 				LOGGER.error(e.getMessage(), e);
 			}
 		}
+		
 		return trustManagers;
 	}
 

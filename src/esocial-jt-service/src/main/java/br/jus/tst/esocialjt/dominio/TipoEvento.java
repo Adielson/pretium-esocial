@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name = "EST_TIPO")
+@Table(name = "EST_TIPO", schema = "esocial")
 public class TipoEvento implements Serializable {
 
 	private static final long serialVersionUID = -3273472159459191662L;

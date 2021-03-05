@@ -17,25 +17,25 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "EST_ENVIO_EVENTO")
+@Table(name = "EST_ENVIO_EVENTO", schema = "esocial")
 @NamedQuery(name = "EnvioEvento.findAll", query = "SELECT e FROM EnvioEvento e")
 public class EnvioEvento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ENV_EVT_ID")
-	@SequenceGenerator(name = "SEQ_ENV_EVT_ID", sequenceName = "SEQ_ENV_EVT_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ENV_EVT_ID")
+	//@SequenceGenerator(name = "SEQ_ENV_EVT_ID", sequenceName = "SEQ_ENV_EVT_ID", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_ENVIO_EVENTO")
 	private Long id;
 

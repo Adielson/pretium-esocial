@@ -45,6 +45,7 @@ public class GeradorLoteEventos {
 		} catch (XmlMappingException | IOException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
+		System.out.println(result.toString());
 		return result.toString();
 	}
 }

@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "EST_ERRO_PROCESSAMENTO")
+@Table(name = "EST_ERRO_PROCESSAMENTO", schema = "esocial")
 @XmlRootElement
 @NamedQueries({ @NamedQuery(name = "ErroProcessamento.findAll", query = "SELECT e FROM ErroProcessamento e"),
 		@NamedQuery(name = "ErroProcessamento.findByDescricao", query = "SELECT e FROM ErroProcessamento e WHERE e.descricao = :descricao"),
@@ -30,8 +29,9 @@ public class ErroProcessamento implements Serializable {
 	private static final long serialVersionUID = 3577546025813162527L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ERRO_PROCESSAMENTO_ID")
-	@SequenceGenerator(name = "SEQ_ERRO_PROCESSAMENTO_ID", sequenceName = "SEQ_ERRO_PROCESSAMENTO_ID", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ERRO_PROCESSAMENTO_ID")
+	//@SequenceGenerator(name = "SEQ_ERRO_PROCESSAMENTO_ID", sequenceName = "SEQ_ERRO_PROCESSAMENTO_ID", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_ERRO_PROCESSAMENTO")
 	private Long id;
 
