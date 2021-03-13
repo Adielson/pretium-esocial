@@ -38,7 +38,6 @@ public class BuscarProximoEnvioService {
 
 		 OcorrenciaDTO ocorrenciaDTO= mapper.treeToValue(objJson, OcorrenciaDTO.class);
 		 
-		 
 		 Ocorrencia ocorrencia = OcorrenciaMapper.INSTANCE.comoOcorrencia(ocorrenciaDTO);
 			ocorrencia.setDataRecebimento(
 					new Date(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()));
